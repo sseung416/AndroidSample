@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         webView.loadUrl("http://www.google.com/")
 
         //editText 선택되고 글자 입력될 때마다 호출됨
-        //인자로 반응한 뷰, 액션ID, 이벤트를 받음 사용하지 않을 땐 _ 표시
+        //인자로 반응한 뷰, 액션ID, 이벤트를 받음. 사용하지 않을 땐 _ 표시
         urlEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 webView.loadUrl(urlEditText.text.toString())

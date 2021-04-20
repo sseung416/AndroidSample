@@ -13,8 +13,8 @@ import kotlin.concurrent.timerTask
 
 class MainActivity : AppCompatActivity() {
     private var time = 0
-    private var isRunning = false
     private var timerTask: Timer? = null
+    private var isRunning = false
     private var lap = 1
 
     private lateinit var fab1: FloatingActionButton

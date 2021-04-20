@@ -28,8 +28,12 @@ class MainActivity : AppCompatActivity() {
             saveData(HEditText.text.toString().toInt(), WEditText.text.toString().toInt())
 
             val intent = Intent(this, ResultActivity::class.java)
+            //Intent(출발할 액티비티, 도착할 액티비티)
+            //Intent 선언 후 startActivity()를 사용해야 다음 화면으로 넘어감
+
             intent.putExtra("height", HEditText.text.toString())
             intent.putExtra("weight", WEditText.text.toString())
+            //Intent.putExtra(Key값, 전달할 인자값)
 
             startActivity(intent)
         }
@@ -37,12 +41,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun saveData(height: Int, weight: Int) {
         val pref: SharedPreferences = this.getPreferences(0)
-        val editor = pref.edit()
+        val pref2: SharedPreferences = getSharedPreferences("test", MODE_PRIVATE)
+        //test의 이름의 기본모드 설정
+        val editor = pref.edit() //SharedPreference를 제어할 editor 선언
 
         editor
                 .putInt("KEY_HEIGHT", height)
                 .putInt("KEY_WEIGHT", weight)
-                .apply()
+                .apply() //파일에 저장
     }
 
     private fun loadData() {
