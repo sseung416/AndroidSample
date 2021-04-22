@@ -43,7 +43,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     //PolyLine 옵션: 굵기5f, 빨간 색
     //PolyLineOptions() 객체로 선 굵기, 색상 등 설정 ㄱㄴ
-    private val polylineOptions = PolylineOptions().width(10f).color(Color.RED)
+    private val polylineOptions = PolylineOptions().width(20f).color(Color.RED)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -135,7 +135,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             //14 level로 확대하며 현재 위치로 화면 이동
             location?.run {
                 val latLng = LatLng(latitude, longitude)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17f))
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,19f))
 
                 Log.d("MapsActivity", "위도: $latitude, 경도 $longitude")
                 //PolyLine에 좌표 추가
