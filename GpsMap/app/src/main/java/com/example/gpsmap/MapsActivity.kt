@@ -2,10 +2,13 @@ package com.example.gpsmap
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -18,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
 //구글 지도를 사용하려면 API 키를 발급받아야함 (values > google_maps_api.xml)
 
@@ -32,10 +36,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val REQUEST_ACCESS_FINE_LOCATION = 1000
 
+    //구글 지도에서 지원하는 이동 자취를 그리는 메서드
+    //addPolyLine(): 선의 집합, 지도에 경로와 노선 표시
+    //addCircle(): 원 표시
+    //addPolygon(): 영역 표시
+
+    //PolyLine 옵션: 굵기5f, 빨간 색
+    //PolyLineOptions() 객체로 선 굵기, 색상 등 설정 ㄱㄴ
+    private val polylineOptions = PolylineOptions().width(10f).color(Color.RED)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //화면 꺼지지 않게 하기
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        //세로 모드로 화면 고정
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_maps)
-        //SupportMapFragment를 가져와 지도가 준비가 되면 확인ㅌ
+
+        //SupportMapFragment를 가져와 지도가 준비가 되면 확인
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -113,12 +132,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             val location = locationResult?.lastLocation
 
-            //14 level로 확대하며 현재 위치로 카메라 이동
+            //14 level로 확대하며 현재 위치로 화면 이동
             location?.run {
                 val latLng = LatLng(latitude, longitude)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17f))
 
                 Log.d("MapsActivity", "위도: $latitude, 경도 $longitude")
+                //PolyLine에 좌표 추가
+                polylineOptions.add(latLng)
+
+                //선그리기
+                mMap.addPolyline(polylineOptions)
             }
         }
     }

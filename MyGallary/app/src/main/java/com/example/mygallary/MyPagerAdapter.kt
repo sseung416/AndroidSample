@@ -1,7 +1,6 @@
 package com.example.mygallary
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -16,7 +15,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 //는 ViewPager의 내용 지금은 ViewPager2!!!!!!!!
 //따라서 FragmentStateAdapter 사용
 
-class MyPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
+class MyPagerAdapter(fragmentManager: FragmentManager) : FragmentStateAdapter(fragmentManager, Lifecycle) {
     //뷰페이저가 표시할 프래그먼트 목록
     private val items = ArrayList<Fragment>()
 
