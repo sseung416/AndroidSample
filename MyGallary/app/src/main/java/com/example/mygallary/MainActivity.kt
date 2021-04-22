@@ -11,10 +11,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
     private val REQUEST_READ_EXTERNAL_STORAGE = 1000
     private lateinit var viewPager : ViewPager2
+    private var timerTask : Timer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,15 +83,27 @@ class MainActivity : AppCompatActivity() {
                 fragments.add(PhotoFragment.newInstance(uri))
             }
             cursor.close()
-        }
 
         //MyPagerAdapter를 생성 -> 프래그먼트 매니저 생성해 인자로 전달
         //프래그먼트 매니저는 getSupportFragmentManager() 메서드로 가져올 수 있고, supportFragmentManger 프로퍼티로 접근
-        val adapter = MyPagerAdapter(supportFragmentManager)
+        val adapter = MyPagerAdapter(supportFragmentManager, _)
         //updateFragments(): 프래그먼트 리스트 전달
         adapter.updateFragments(fragments)
         //어댑터를 viewPager에 설정
         viewPager.adapter = adapter
+
+
+            //3초마다 자동 슬라이드
+            timerTask = timer(period = 3000) {
+                runOnUiThread {
+                    //현재 페이지가 마지막이 아니라면 다음 UI로 변경
+                    if(viewPager.currentItem < adapter.itemCount - 1) {
+                        viewPager.currentItem = viewPager.currentItem + 1
+                    } else { //마지막 페이지면 첫 페이지로로                        viewPager.currentItem = 0
+                    }
+                }
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
