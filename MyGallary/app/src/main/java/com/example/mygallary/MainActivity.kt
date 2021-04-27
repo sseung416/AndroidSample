@@ -90,7 +90,9 @@ class MainActivity : AppCompatActivity() {
         //updateFragments(): 프래그먼트 리스트 전달
         adapter.updateFragments(fragments)
         //어댑터를 viewPager에 설정
-        viewPager.adapter = adapter
+
+//            val adapter = MyPagerAdapter().updateFragments(fragments)
+            viewPager.adapter = adapter
 
 
             //3초마다 자동 슬라이드

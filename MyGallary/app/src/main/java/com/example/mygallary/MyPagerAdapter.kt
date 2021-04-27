@@ -1,7 +1,9 @@
 package com.example.mygallary
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
@@ -15,20 +17,21 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 //는 ViewPager의 내용 지금은 ViewPager2!!!!!!!!
 //따라서 FragmentStateAdapter 사용
 
-class MyPagerAdapter(fragmentManager: FragmentManager) : FragmentStateAdapter(fragmentManager, Lifecycle) {
+class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdapter(fragmentManager!!) {
+//class MyPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     //뷰페이저가 표시할 프래그먼트 목록
     private val items = ArrayList<Fragment>()
 
     //viewPager 시절
-//    //아이템 개수
-//    override fun getCount(): Int {
-//        return items.size
-//    }
-//
-//    //position 위치의 프래그먼트
-//    override fun getItem(position: Int): Fragment {
-//        return items[position]
-//    }
+    //아이템 개수
+    override fun getCount(): Int {
+        return items.size
+    }
+
+    //position 위치의 프래그먼트
+    override fun getItem(position: Int): Fragment {
+        return items[position]
+    }
 
     //viewPager2 !!!!!!!!!!!!!
     //아이템 갱신
@@ -36,11 +39,12 @@ class MyPagerAdapter(fragmentManager: FragmentManager) : FragmentStateAdapter(fr
         this.items.addAll(items)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
-    override fun createFragment(position: Int): Fragment {
-        return items[position]
-    }
+//    override fun getItemCount(): Int {
+//        return items.size
+//    }
+//
+//    override fun createFragment(position: Int): Fragment {
+//        return items[position]
+//    }
+    //동적! 유지보수 쉬움
 }
