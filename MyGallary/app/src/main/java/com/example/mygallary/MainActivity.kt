@@ -86,7 +86,8 @@ class MainActivity : AppCompatActivity() {
 
         //MyPagerAdapter를 생성 -> 프래그먼트 매니저 생성해 인자로 전달
         //프래그먼트 매니저는 getSupportFragmentManager() 메서드로 가져올 수 있고, supportFragmentManger 프로퍼티로 접근
-        val adapter = MyPagerAdapter(supportFragmentManager)
+//        val adapter = MyPagerAdapter(supportFragmentManager)
+            val adapter = supportFragmentManager
         //updateFragments(): 프래그먼트 리스트 전달
         adapter.updateFragments(fragments)
         //어댑터를 viewPager에 설정

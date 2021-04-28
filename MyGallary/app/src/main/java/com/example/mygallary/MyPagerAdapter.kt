@@ -1,9 +1,6 @@
 package com.example.mygallary
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.*
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
@@ -17,7 +14,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 //는 ViewPager의 내용 지금은 ViewPager2!!!!!!!!
 //따라서 FragmentStateAdapter 사용
 
-class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdapter(fragmentManager!!) {
+class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStateAdapter(f) {
 //class MyPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     //뷰페이저가 표시할 프래그먼트 목록
     private val items = ArrayList<Fragment>()
@@ -38,6 +35,7 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdap
     fun updateFragments(items : List<Fragment>) {
         this.items.addAll(items)
     }
+
 
 //    override fun getItemCount(): Int {
 //        return items.size
