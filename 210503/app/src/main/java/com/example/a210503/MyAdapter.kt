@@ -1,5 +1,6 @@
 package com.example.a210503
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,10 @@ class MyAdapter(private val items: ArrayList<ItemData>) : RecyclerView.Adapter<M
         fun binding(items: ItemData){
             tv_title.text = items.title
             tv_contents.text = items.contents
+
+            itemView.setOnClickListener {
+                Log.d("SSS", "${items.title} 리스트 선택")
+            }
         }
     }
 
