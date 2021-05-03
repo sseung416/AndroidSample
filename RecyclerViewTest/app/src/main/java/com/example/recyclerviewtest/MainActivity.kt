@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = myAdapter
 
         val layout = LinearLayoutManager(this)
+
         recyclerView.layoutManager = layout
         recyclerView.setHasFixedSize(true)
     }
