@@ -36,7 +36,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{activity.text.length > 5 ? View.VISIBLE : View.GONE}"
-            android:text="Button" />
+            android:text="Button"
+            android:onClick="@{activity::showText}"/>
     </LinearLayout>
 </layout>
