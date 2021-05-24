@@ -1,10 +1,9 @@
 package com.example.todolist.fragment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
@@ -13,7 +12,7 @@ import com.example.todolist.data.ToDoListData
 
 
 class TodoListFragment : Fragment() {
-    //아니 시발 왜 헥사는 되고 스타일은 안되냐 ㅆㅂ
+
     private val testItem = arrayListOf(
         ToDoListData(R.color.red, "잠자기"),
         ToDoListData(R.color.grey, "늦게 잠자기"),
@@ -35,6 +34,11 @@ class TodoListFragment : Fragment() {
         recyclerView.layoutManager = layout
 
         return rootView
+    }
+
+    //툴바
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_todolist, menu)
     }
 
 }
