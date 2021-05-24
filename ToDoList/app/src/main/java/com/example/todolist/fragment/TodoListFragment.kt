@@ -36,9 +36,4 @@ class TodoListFragment : Fragment() {
         return rootView
     }
 
-    //툴바
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_todolist, menu)
-    }
-
 }
