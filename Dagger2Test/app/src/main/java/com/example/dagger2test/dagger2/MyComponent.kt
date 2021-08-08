@@ -1,10 +1,9 @@
 package com.example.dagger2test
 
+import com.example.dagger2test.dagger2.MyClass
 import dagger.Component
 import dagger.MembersInjector
-import javax.inject.Singleton
 
-@Singleton
 @Component(modules = [MyModule::class])
 interface MyComponent {
     fun getAge(): Int
