@@ -22,8 +22,9 @@ class ExampleUnitTestRxJava {
 
 //        testMap()
 //        testFlatMap()
-        testBuffer()
+//        testBuffer()
 
+        testScheduler()
     }
 
     private fun testObservableCreate() {
@@ -126,4 +127,27 @@ class ExampleUnitTestRxJava {
 
     private fun testBuffer() {
     }
+
+    /**  스케줄러  **/
+    private fun testScheduler() {
+        val src = Observable.create<Int> {
+            for (i in 0..3) {
+                val threadName = Thread.currentThread().name // 스레드 이름
+                println("#Subs on $threadName: $i")
+                it.onNext(i)
+                Thread.sleep(100)
+            }
+            it.onComplete()
+        }
+
+        src.observeOn(Schedulers.computation())
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                val threadName = Thread.currentThread().name
+                println("#Obsv on $threadName: $it")
+            }
+        Thread.sleep(500)
+    }
+
+
 }
