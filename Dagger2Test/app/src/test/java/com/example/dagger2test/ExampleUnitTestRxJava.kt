@@ -4,6 +4,7 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 
@@ -17,7 +18,12 @@ class ExampleUnitTestRxJava {
 //        testCompletable()
 //        testHotObservable1()
 //        testHotObservable2()
-        testDisposable()
+//        testDisposable()
+
+//        testMap()
+//        testFlatMap()
+        testBuffer()
+
     }
 
     private fun testObservableCreate() {
@@ -97,5 +103,27 @@ class ExampleUnitTestRxJava {
     private fun testDisposable() {
         // dispose
         // CompositeDisposable
+    }
+
+    /**  연산자  **/
+    private fun testMap() {
+        val intSrc = Observable.just(1, 2,3)
+        intSrc.map { it*10 }
+            .subscribe(System.out::println)
+    }
+
+    private fun testFlatMap() {
+        val src = Observable.just("a", "b","c")
+        src.flatMap { Observable.just(it+1, it+2) }
+            .subscribe(System.out::println)
+
+        // 구구단 . . .
+        Observable.range(2, 8)
+            .flatMap { x -> Observable.range(1, 9)
+                .map { y -> String.format("%d x %d = %d", x, y, x*y) }}
+            .subscribe(System.out::println)
+    }
+
+    private fun testBuffer() {
     }
 }
