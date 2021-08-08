@@ -3,8 +3,8 @@ package com.example.dagger2test
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [ParentModule::class])
-class MyModule {
+@Module
+class ParentModule {
     @Provides
-    fun providesAge(): Int = 100
+    fun provideName(): String = "ParentModule"
 }
