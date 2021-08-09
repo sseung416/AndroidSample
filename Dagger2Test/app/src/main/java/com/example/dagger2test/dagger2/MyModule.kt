@@ -1,9 +1,7 @@
-package com.example.dagger2test
+package com.example.dagger2test.dagger2
 
 import dagger.Module
 import dagger.Provides
-import java.util.*
-import java.util.stream.Collector
 import javax.inject.Singleton
 
 @Module(includes = [ParentModule::class])

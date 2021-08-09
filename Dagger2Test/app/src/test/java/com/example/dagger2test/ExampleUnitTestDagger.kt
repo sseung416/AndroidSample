@@ -1,6 +1,6 @@
 package com.example.dagger2test
 
-import com.example.dagger2test.dagger2.MyClass
+import com.example.dagger2test.dagger2.*
 import org.junit.Test
 
 /**
@@ -13,7 +13,7 @@ class ExampleUnitTestDagger {
     fun testDagger() {
 //        testFirstDI()
 //        testMemberInjector1()
-//        testMemberInjector2()
+        testMemberInjector2()
     }
 
     // 첫 의존성 주입

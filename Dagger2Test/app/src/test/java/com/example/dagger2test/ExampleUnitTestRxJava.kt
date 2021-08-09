@@ -24,7 +24,11 @@ class ExampleUnitTestRxJava {
 //        testFlatMap()
 //        testBuffer()
 
-        testScheduler()
+//        testScheduler()
+
+//        testBackPressure()
+
+        testSubject()
     }
 
     private fun testObservableCreate() {
@@ -149,5 +153,11 @@ class ExampleUnitTestRxJava {
         Thread.sleep(500)
     }
 
+    /**  배압  **/
+    private fun testBackPressure() {
+    }
 
+    /**  Subject  **/
+    private fun testSubject() {
+    }
 }

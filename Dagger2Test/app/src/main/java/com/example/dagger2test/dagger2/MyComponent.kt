@@ -1,6 +1,5 @@
-package com.example.dagger2test
+package com.example.dagger2test.dagger2
 
-import com.example.dagger2test.dagger2.MyClass
 import dagger.Component
 import dagger.MembersInjector
 
