@@ -1,0 +1,2 @@
+com/example/retrofit2/BuildConfig.java
+ com.example.retrofit2.BuildConfig

@@ -1,0 +1,2 @@
+com/example/rxjavatest/BuildConfig.java
+ com.example.rxjavatest.BuildConfig
