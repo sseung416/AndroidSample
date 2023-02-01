@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15188eec-0d67-45f0-9da2-fc93e5ad90f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ShareSample/app/src/main/java/com/github/sseung416/sharesample/SampleContent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShareSample/app/src/main/java/com/github/sseung416/sharesample/utils/ImageUtils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShareSample/app/src/main/java/com/github/sseung416/sharesample/utils/ShareUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShareSample/app/src/main/java/com/github/sseung416/sharesample/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ShareSample/app/src/main/java/com/github/sseung416/sharesample/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAppSample/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebAppSample/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAppSample/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebAppSample/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
