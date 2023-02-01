@@ -24,7 +24,6 @@ fun MainScreen(
     val webViewState = viewModel.webViewState
     val uiState by viewModel.uiState.collectAsState()
 
-    // TODO: callbackFlow 로 대체할 수 있을까?
     val webEventHandler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
             when (NativeEvent.get(msg.what)) {
