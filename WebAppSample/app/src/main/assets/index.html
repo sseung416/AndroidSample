@@ -4,9 +4,19 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="UTF-8">
     <script>
+        const NativeConst = {
+          HIDE_LOADING : 0,
+          SHOW_LOADING : 1,
+          SHOW_DIALOG : 2
+        };
 
+        function showDialog(message) {
+            Native.execute(NativeConst.SHOW_DIALOG, message);
+        }
     </script>
 </head>
 <body>
+    <button onclick="showDialog('다이얼로그1의 메세지')">다이얼로그1</button>
+    <button onclick="showDialog('안녕? 나는 말하는 감자야')">다이얼로그2</button>
 </body>
 </html>
