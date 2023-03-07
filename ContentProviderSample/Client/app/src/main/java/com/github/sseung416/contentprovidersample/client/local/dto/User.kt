@@ -19,5 +19,28 @@ data class User(
     val age: Int,
 
     @ColumnInfo("u_c_id")
-    val favoriteColorId: Int
-)
+    val favoriteColorId: Int,
+) {
+    companion object {
+        const val KEY_USER_ID = "userId"
+        const val KEY_NAME = "name"
+        const val KEY_AGE = "age"
+        const val KEY_COLOR_ID = "colorId"
+    }
+}
+
+fun ContentValues.getUser() =
+    User(
+        id = getAsInteger(User.KEY_USER_ID),
+        name = getAsString(User.KEY_NAME),
+        age = getAsInteger(User.KEY_AGE),
+        favoriteColorId = getAsInteger(User.KEY_COLOR_ID)
+    )
+
+fun Cursor.getUser() =
+    User(
+        id = getInt(0),
+        name = getString(1),
+        age = getInt(2),
+        favoriteColorId = getInt(3)
+    )
