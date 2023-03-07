@@ -1,13 +1,16 @@
 package com.github.sseung416.contentprovidersample.client.local.dto
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import android.content.ContentValues
+import android.database.Cursor
+import androidx.room.*
 
-@Entity(tableName = "user")
+@Entity(
+    tableName = "user",
+    indices = [Index(value = arrayOf("_ID")), Index(value = arrayOf("u_c_id"), unique = true)]
+)
 data class User(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo("u_id")
+    @ColumnInfo("_ID")
     val id: Int? = null,
 
     @ColumnInfo("u_name")

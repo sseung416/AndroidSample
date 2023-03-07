@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
     tableName = "color",
     foreignKeys = [ForeignKey(
         entity = User::class,
-        parentColumns = arrayOf("u_id"),
+        parentColumns = arrayOf("u_c_id"),
         childColumns = arrayOf("c_id")
     )]
 )
