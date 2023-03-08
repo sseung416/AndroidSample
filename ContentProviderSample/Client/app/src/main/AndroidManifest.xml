@@ -29,8 +29,6 @@
         <provider
             android:authorities="com.github.sseung416.contentprovidersample.provider"
             android:name=".UserProvider"
-            android:readPermission="com.github.sseung416.contentprovidersample.READ_DATABASE"
-            android:writePermission="com.github.sseung416.contentprovidersample.WRITE_DATABASE"
             android:enabled="true"
             android:exported="true" />
     </application>
