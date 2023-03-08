@@ -75,11 +75,6 @@ class UserProvider : ContentProvider() {
     companion object {
         const val PROVIDER_URL = "com.github.sseung416.contentprovidersample.provider"
 
-        private const val KEY_USER_ID = "userId"
-        private const val KEY_NAME = "name"
-        private const val KEY_AGE = "age"
-        private const val KEY_COLOR_ID = "colorId"
-
         const val PATH_USER = "user"
         const val PATH_COLOR = "user/color"
         private const val PATH_USER_CODE = 1

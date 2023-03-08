@@ -16,16 +16,17 @@ data class User(
     @ColumnInfo("u_name")
     val name: String,
 
+    @ColumnInfo("u_age")
     val age: Int,
 
     @ColumnInfo("u_c_id")
-    val favoriteColorId: Int,
+    val favoriteColorId: Int?,
 ) {
     companion object {
-        const val KEY_USER_ID = "userId"
-        const val KEY_NAME = "name"
-        const val KEY_AGE = "age"
-        const val KEY_COLOR_ID = "colorId"
+        const val KEY_USER_ID = "_ID"
+        const val KEY_NAME = "u_name"
+        const val KEY_AGE = "u_age"
+        const val KEY_COLOR_ID = "u_c_id"
     }
 }
 
