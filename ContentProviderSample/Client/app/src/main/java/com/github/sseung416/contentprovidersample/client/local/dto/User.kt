@@ -29,7 +29,7 @@ data class User(
     }
 }
 
-fun ContentValues.getUser() =
+fun ContentValues.toUser() =
     User(
         id = getAsInteger(User.KEY_USER_ID),
         name = getAsString(User.KEY_NAME),

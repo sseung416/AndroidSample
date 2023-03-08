@@ -4,14 +4,13 @@ import android.content.*
 import android.database.Cursor
 import android.net.Uri
 import com.github.sseung416.contentprovidersample.client.local.LocalDatabase
-import com.github.sseung416.contentprovidersample.client.local.dto.getUser
+import com.github.sseung416.contentprovidersample.client.local.dto.toUser
 
 class UserProvider : ContentProvider() {
 
     // Content URI 설정
     private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH).apply {
         addURI(PROVIDER_URL, PATH_USER, PATH_USER_CODE)
-
         addURI(PROVIDER_URL, PATH_COLOR, PATH_COLOR_CODE)
     }
 
@@ -41,7 +40,7 @@ class UserProvider : ContentProvider() {
     // 새로 추가된 데이터의 Content URI를 반환해야 함
     override fun insert(uri: Uri, values: ContentValues?): Uri? = uri.whenUserPath {
         values?.run {
-            val newRowId = userDao.insert(this.getUser())
+            val newRowId = userDao.insert(this.toUser())
             newRowId.let { ContentUris.withAppendedId(uri, it) }
         }
     }
@@ -61,7 +60,7 @@ class UserProvider : ContentProvider() {
         selectionArgs: Array<out String>?,
     ): Int = uri.whenUserPath {
         values?.run {
-            userDao.update(this.getUser())
+            userDao.update(this.toUser())
         } ?: throw NullPointerException("ContentValues가 null~")
     }
 
