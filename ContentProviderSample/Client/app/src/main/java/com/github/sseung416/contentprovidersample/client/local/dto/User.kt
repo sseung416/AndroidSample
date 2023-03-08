@@ -6,7 +6,11 @@ import androidx.room.*
 
 @Entity(
     tableName = "user",
-    indices = [Index(value = arrayOf("_ID")), Index(value = arrayOf("u_c_id"), unique = true)]
+    foreignKeys = [ForeignKey(
+        entity = Color::class,
+        parentColumns = arrayOf("c_id"),
+        childColumns = arrayOf("u_c_id")
+    )]
 )
 data class User(
     @PrimaryKey(autoGenerate = true)
@@ -37,6 +41,14 @@ fun ContentValues.toUser() =
         age = getAsInteger(User.KEY_AGE),
         favoriteColorId = getAsInteger(User.KEY_COLOR_ID)
     )
+
+fun User.toContentValues() =
+    ContentValues().apply {
+        put(User.KEY_USER_ID, id)
+        put(User.KEY_NAME, name)
+        put(User.KEY_AGE, age)
+        put(User.KEY_COLOR_ID, favoriteColorId)
+    }
 
 fun Cursor.getUser() =
     User(
